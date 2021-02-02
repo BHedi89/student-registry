@@ -1,5 +1,5 @@
 <div class="container">
-  <app-header title="Hallgató hozzáadása" buttonClass="btn-secondary" buttonTitle="Vissza" routerLink="/students">
+  <app-header title="Hallgató hozzáadása" buttonClass="btn-secondary" buttonTitle="Vissza" buttonLink="/students">
 
   </app-header>
   <div class="form-group mb-3">
@@ -15,7 +15,7 @@
     <input type="number" class="form-control" id="formControl-birth-year" [(ngModel)]="s.age" [ngClass]="{'is-invalid': !ageValid}">
   </div>
   <label for="genderFormControlInput1" class="form-label">Nem</label>
-  <select class="form-select" aria-label="Default select example" id="genderFormControlInput1" [(ngModel)]="s.gender">
+  <select class="form-control" aria-label="Default select example" id="genderFormControlInput1" [(ngModel)]="s.gender">
     <option value="FEMALE" selected>Nő</option>
     <option value="MALE">Férfi</option>
   </select>

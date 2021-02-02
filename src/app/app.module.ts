@@ -8,8 +8,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { StudentRowComponent } from './components/student-row/student-row.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddStudentComponent } from './components/add-student/add-student.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModifyModalComponent } from './components/modify-modal/modify-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     StudentListComponent,
     HeaderComponent,
     StudentRowComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    ModifyModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

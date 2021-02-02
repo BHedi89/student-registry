@@ -3,10 +3,10 @@
 <td>{{student.age}}</td>
 <td>{{student.gender}}</td>
 <td>
-  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#changeModal">
+  <button type="button" class="btn btn-warning" (click)="openModifyModal()">
     Módosít
   </button>
-  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+  <button type="button" class="btn btn-danger"
   (click)="deleteEvent()">
     Töröl
   </button>

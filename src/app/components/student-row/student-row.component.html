@@ -1,0 +1,13 @@
+<td scope="row">{{student.name}}</td>
+<td>{{student.email}}</td>
+<td>{{student.age}}</td>
+<td>{{student.gender}}</td>
+<td>
+  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#changeModal">
+    Módosít
+  </button>
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+  (click)="deleteEvent()">
+    Töröl
+  </button>
+</td>

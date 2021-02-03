@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Student} from '../../interfaces/student';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ModifyModalComponent} from "../modify-modal/modify-modal.component";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModifyModalComponent} from '../modify-modal/modify-modal.component';
 
 @Component({
   // tslint:disable-next-line:component-selector

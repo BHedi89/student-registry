@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Student} from '../interfaces/student';
 import {StudentResponse} from '../interfaces/student-response';
 import {map} from 'rxjs/operators';
+import {AbstractControl, ValidationErrors} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,18 @@ export class StudentService {
   addStudent(s: Student): Observable<StudentResponse> {
     return this.http.post<StudentResponse>(
       this.SERVER_URL,
+      {student: s},
+      {withCredentials: true}
+    );
+  }
+
+  genderValidator(control: AbstractControl): ValidationErrors | null {
+    return ['female', 'male'].includes(control.value.toLowerCase()) ? null : {invalid: true};
+  }
+
+  modifyStudent(id: number, s: Student): Observable<StudentResponse> {
+    return this.http.put<StudentResponse>(
+      this.SERVER_URL + '?id=' + id,
       {student: s},
       {withCredentials: true}
     );

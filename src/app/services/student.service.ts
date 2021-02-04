@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {Student} from '../interfaces/student';
 import {StudentResponse} from '../interfaces/student-response';
 import {map} from 'rxjs/operators';
@@ -13,7 +13,11 @@ export class StudentService {
 
   private readonly SERVER_URL = 'https://progmatic.hu/frontend/students';
 
-  constructor(private http: HttpClient) { }
+  private studentSubject: Subject<Student[]>;
+
+  constructor(private http: HttpClient) {
+    this.studentSubject = new Subject<Student[]>();
+  }
 
   getStudents(): Observable<Student[]> {
     return this.http.get<StudentResponse>(this.SERVER_URL, {withCredentials: true})
@@ -43,5 +47,12 @@ export class StudentService {
       {student: s},
       {withCredentials: true}
     );
+  }
+
+  refreshStudents(students: Student[]): void {
+    this.studentSubject.next(students);
+  }
+  get refreshObservable(): Observable<Student[]> {
+    return this.studentSubject.asObservable();
   }
 }

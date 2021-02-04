@@ -15,12 +15,9 @@ export class ModifyModalComponent implements OnInit {
   @Input()
   student: Student;
 
-  s: Student[];
-
   studentForm: FormGroup;
 
   constructor(public activeModal: NgbActiveModal, private studentService: StudentService, private router: Router) {
-    this.s = [];
   }
 
   ngOnInit(): void {
@@ -39,9 +36,9 @@ export class ModifyModalComponent implements OnInit {
   submit(): boolean {
     if (this.studentForm.valid) {
       this.studentService.modifyStudent(this.student.id, this.studentForm.value).subscribe(response => {
-        this.s = response.students;
+        this.studentService.refreshStudents(response.students);
+        this.activeModal.close();
       });
-      this.activeModal.close();
     } else {
       return false;
     }

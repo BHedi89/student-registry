@@ -20,6 +20,9 @@ export class StudentListComponent implements OnInit {
       s => {
         this.students2 = s;
       });
+    this.studentService.refreshObservable.subscribe(students => {
+      this.students2 = students;
+    });
   }
 
   delete(s: Student): void {

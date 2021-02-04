@@ -11,15 +11,20 @@ import {Subscription} from "rxjs";
 export class StudentListComponent implements OnInit, OnDestroy {
 
   students2: Student[];
+  refreshSubscription: Subscription;
+  isLoading: boolean;
 
   constructor(private studentService: StudentService) {
     this.students2 = [];
+    this.isLoading = false;
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.studentService.getStudents().subscribe(
       s => {
         this.students2 = s;
+        this.isLoading = false;
       });
     this.refreshSubscription = this.studentService.refreshObservable.subscribe(students => {
       this.students2 = students;
